@@ -53,6 +53,10 @@ public class taxInitial extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         valorUVT = new javax.swing.JTextField();
         agregarRenta = new javax.swing.JButton();
+        sueldoCiudadano = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        uvtanio = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         salarioMinimo = new javax.swing.JTextField();
@@ -66,6 +70,7 @@ public class taxInitial extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         totalImpuesto = new javax.swing.JLabel();
         liquidar = new javax.swing.JButton();
+        reiniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -191,10 +196,26 @@ public class taxInitial extends javax.swing.JFrame {
 
         jLabel3.setText("UVT");
 
+        valorUVT.setEditable(false);
         valorUVT.setName("valorUVT"); // NOI18N
 
         agregarRenta.setText("AGREGAR");
         agregarRenta.setName("agregarRenta"); // NOI18N
+
+        sueldoCiudadano.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                sueldoCiudadanoKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                sueldoCiudadanoKeyReleased(evt);
+            }
+        });
+
+        jLabel10.setText("Sueldo AÑO");
+
+        jLabel11.setText("UVT AÑO");
+
+        uvtanio.setText("47065");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -203,23 +224,38 @@ public class taxInitial extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(uvtanio, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sueldoCiudadano, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(valorUVT, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(agregarRenta)))
-                .addContainerGap(350, Short.MAX_VALUE))
+                        .addComponent(agregarRenta))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valorUVT, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(agregarRenta)
-                    .addComponent(valorUVT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(sueldoCiudadano, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(uvtanio, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         jTabbedPane1.addTab("Renta", jPanel3);
@@ -296,6 +332,8 @@ public class taxInitial extends javax.swing.JFrame {
 
         liquidar.setText("LIQUIDAR IMPUESTOS");
 
+        reiniciar.setText("REINICIAR");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -306,6 +344,8 @@ public class taxInitial extends javax.swing.JFrame {
                     .addComponent(totalImpuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(liquidar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(reiniciar)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -313,7 +353,9 @@ public class taxInitial extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(liquidar)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(liquidar)
+                    .addComponent(reiniciar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totalImpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -351,6 +393,17 @@ public class taxInitial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void sueldoCiudadanoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sueldoCiudadanoKeyPressed
+        
+    }//GEN-LAST:event_sueldoCiudadanoKeyPressed
+
+    private void sueldoCiudadanoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sueldoCiudadanoKeyReleased
+        double uvtanual = Double.parseDouble(uvtanio.getText());
+        double sueldoAnual = Double.parseDouble(sueldoCiudadano.getText());
+        String calculoUVT =  (sueldoAnual/uvtanual)+"";     
+        valorUVT.setText(calculoUVT);
+    }//GEN-LAST:event_sueldoCiudadanoKeyReleased
 
     /**
      * @param args the command line arguments
@@ -396,6 +449,8 @@ public class taxInitial extends javax.swing.JFrame {
     private javax.swing.JTextField direccion;
     private javax.swing.JSpinner fecha;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -415,8 +470,11 @@ public class taxInitial extends javax.swing.JFrame {
     private javax.swing.JButton liquidar;
     private javax.swing.JTextField placa;
     private javax.swing.JTextField propietario;
+    private javax.swing.JButton reiniciar;
     private javax.swing.JTextField salarioMinimo;
+    private javax.swing.JTextField sueldoCiudadano;
     private javax.swing.JLabel totalImpuesto;
+    private javax.swing.JTextField uvtanio;
     private javax.swing.JTextField valorAvaluoPropiedad;
     private javax.swing.JTextField valorAvaluoVehiculo;
     private javax.swing.JTextField valorUVT;
@@ -480,6 +538,18 @@ public class taxInitial extends javax.swing.JFrame {
     
     public JTextField getPlaca() {
         return placa;    
+    }
+    
+    public JTextField getUVTAnio() {
+        return uvtanio;    
+    }
+    
+    public JTextField getSueldoCiudadano() {
+        return sueldoCiudadano;    
+    }
+    
+    public JButton getReiniciar() {
+        return reiniciar;    
     }
 }
 

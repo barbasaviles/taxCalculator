@@ -26,6 +26,7 @@ public class CalculationController implements ActionListener {
         view.getAgregarPropiedad().addActionListener(this);
         view.getAgregarVehiculo().addActionListener(this);
         view.getAgregarRenta().addActionListener(this);
+        view.getReiniciar().addActionListener(this);
         view.getLiquidar().addActionListener(this);
     }
 
@@ -86,7 +87,15 @@ public class CalculationController implements ActionListener {
 
         valor = impuesto.calcularImpuesto(UVT);
         
-        System.out.println(valor);
+        double calUVTtoMoney = valor * Double.parseDouble(view.getUVTAnio().getText());        
+        
+        liquidacion objLiquidacion = new liquidacion();
+
+        objLiquidacion.setTipo("IMPUESTO RENTA");
+        objLiquidacion.setDescripcion(view.getSueldoCiudadano().getText());
+        objLiquidacion.setValor(calUVTtoMoney);
+
+        listLiquidaciones.add(objLiquidacion);
     }
 
     private void liquidarImpuestos() {
@@ -113,9 +122,7 @@ public class CalculationController implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println();
-        System.out.println(e);
+    public void actionPerformed(ActionEvent e) {        
         if (e.getSource() == view.getAgregarPropiedad()) {
             calcularImpuestoPropiedad();
         }
@@ -130,6 +137,11 @@ public class CalculationController implements ActionListener {
 
         if (e.getSource() == view.getLiquidar()) {
             liquidarImpuestos();
+        }
+        
+        if (e.getSource() == view.getReiniciar()) {
+            listLiquidaciones.clear();
+            view.getTotalImpuesto().setText("TOTAL LIQUIDACION IMPUESTOS: ");
         }
 
         imprimirConsola();

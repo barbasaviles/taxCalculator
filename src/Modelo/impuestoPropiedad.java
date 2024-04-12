@@ -15,8 +15,8 @@ public class impuestoPropiedad {
         double descuento = 0.15;
 
         double SMLV135 = calculoCantidadSMLV(salarioMinimo, 135);
-        double SMLV136 = calculoCantidadSMLV(salarioMinimo, 136);
-
+        double SMLV136 = calculoCantidadSMLV(salarioMinimo, 136);        
+        
         if (avaluo <= SMLV135) {
             porcentaje = 0.035;
         }

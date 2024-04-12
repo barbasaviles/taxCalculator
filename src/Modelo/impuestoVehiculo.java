@@ -23,7 +23,7 @@ public class impuestoVehiculo {
             liquidacion = avaluo*0.025;
         }
         
-        if(avaluo > 11130500){
+        if(avaluo > 111305000){
             liquidacion = avaluo*0.035;
         }        
         
