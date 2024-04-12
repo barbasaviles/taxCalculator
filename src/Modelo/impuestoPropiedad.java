@@ -1,19 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 /**
  *
- * @author Gabriel
+ * @author Juan
  */
-public class impuestoPropiedad {
-
-    float[] tipoPropiedad = {1};
+public class impuestoPropiedad {    
 
     public double calcularImpuesto(double avaluo, double salarioMinimo, Date fecha) {
         double liquidacion = 0;
@@ -38,30 +32,6 @@ public class impuestoPropiedad {
         if (fecha.getTime() <= fechaLimitDescuento) {            
             liquidacion = liquidacion -(liquidacion * descuento);
         }        
-        
-        System.out.println();
-        System.out.printf("Fecha Java: %s", fecha.getTime());        
-
-        System.out.println();
-        System.out.printf("Salario Minimo: %f", salarioMinimo);
-
-        System.out.println();
-        System.out.printf("Avaluo: %f", avaluo);
-
-        System.out.println();
-        System.out.printf("SMLV135: %f", SMLV135);
-
-        System.out.println();
-        System.out.printf("SMLV136: %f", SMLV136);
-
-        System.out.println();
-        System.out.printf("Porcentaje: %f", porcentaje);        
-        
-        System.out.println();
-        System.out.printf("Descuento: %f", descuento);    
-
-        System.out.println();
-        System.out.printf("Liquidacion impuesto Propiedad: %f", liquidacion);
 
         return liquidacion;
     }

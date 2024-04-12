@@ -1,6 +1,8 @@
 package Controlador;
 
 import Modelo.impuestoPropiedad;
+import Modelo.impuestoRenta;
+import Modelo.impuestoVehiculo;
 import Modelo.liquidacion;
 import Vista.taxInitial;
 import java.awt.event.ActionListener;
@@ -10,7 +12,7 @@ import java.util.Date;
 
 /**
  *
- * @author Gabriel
+ * @author Juan
  */
 public class CalculationController implements ActionListener {
 
@@ -22,6 +24,8 @@ public class CalculationController implements ActionListener {
         listLiquidaciones = new ArrayList<liquidacion>();
         view = new taxInitial();
         view.getAgregarPropiedad().addActionListener(this);
+        view.getAgregarVehiculo().addActionListener(this);
+        view.getAgregarRenta().addActionListener(this);
         view.getLiquidar().addActionListener(this);
     }
 
@@ -32,11 +36,11 @@ public class CalculationController implements ActionListener {
         view.setVisible(true);
     }
 
-    private void avaluoCatastral() {
+    private void calcularImpuestoPropiedad() {
         double valor = 0;
-
+        
         impuestoPropiedad impuesto = new impuestoPropiedad();
-
+        
         double avaluo = Double.parseDouble(view.getValorAvaluoPropiedad().getText());
         double salario = Double.parseDouble(view.getSalarioMinimo().getText());
 
@@ -51,6 +55,38 @@ public class CalculationController implements ActionListener {
         objLiquidacion.setValor(valor);
 
         listLiquidaciones.add(objLiquidacion);
+    }
+    
+    private void calcularImpuestoVehiculo(){
+        double valor = 0;
+        
+        impuestoVehiculo impuesto = new impuestoVehiculo();
+        
+        double avaluo = Double.parseDouble(view.getValorAvaluoVehiculo().getText());       
+
+        Date date = (Date) view.getFecha().getValue();        
+
+        valor = impuesto.calcularImpuesto(avaluo, date);
+
+        liquidacion objLiquidacion = new liquidacion();
+
+        objLiquidacion.setTipo("VEHICULO");
+        objLiquidacion.setDescripcion(view.getPlaca().getText());
+        objLiquidacion.setValor(valor);
+
+        listLiquidaciones.add(objLiquidacion);
+    }
+    
+    private void calcularImpuestoRenta(){
+        double valor = 0;
+        
+        impuestoRenta impuesto = new impuestoRenta();
+        
+        double UVT = Double.parseDouble(view.getValorUVT().getText());               
+
+        valor = impuesto.calcularImpuesto(UVT);
+        
+        System.out.println(valor);
     }
 
     private void liquidarImpuestos() {
@@ -81,7 +117,15 @@ public class CalculationController implements ActionListener {
         System.out.println();
         System.out.println(e);
         if (e.getSource() == view.getAgregarPropiedad()) {
-            avaluoCatastral();
+            calcularImpuestoPropiedad();
+        }
+        
+        if (e.getSource() == view.getAgregarVehiculo()) {
+            calcularImpuestoVehiculo();
+        }
+        
+        if (e.getSource() == view.getAgregarRenta()) {
+            calcularImpuestoRenta();
         }
 
         if (e.getSource() == view.getLiquidar()) {

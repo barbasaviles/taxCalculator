@@ -46,7 +46,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jTabbedPane1" min="-2" pref="131" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="252" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="165" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -316,9 +316,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="valorUVT" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="agregarRenta" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="valorUVT" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="30" max="32767" attributes="0"/>
                   </Group>
